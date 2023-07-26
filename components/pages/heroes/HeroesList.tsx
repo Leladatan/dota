@@ -15,7 +15,7 @@ const HeroesList: FC<HeroesListProps> = ({heroes}) => {
                       className="flex flex-col items-center justify-center gap-y-2"
                 >
                     <Image className="rounded-md" src={`https://api.opendota.com${hero.img}`}
-                           width={80} height={80} alt="img" loading={"lazy"}
+                           width={80} height={80} alt="img" loading="lazy"
                     />
                     <h2 className="text-center">{hero.localized_name}</h2>
                 </Link>

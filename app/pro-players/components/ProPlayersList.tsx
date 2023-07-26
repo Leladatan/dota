@@ -12,7 +12,7 @@ const ProPlayersList: FC<ProPlayersListProps> = ({players}) => {
             {players?.map(player => (
                 <>
                     <p key={player.account_id} className="text-center">{player.name}</p>
-                    {player.avatarfull && <Image src={player.avatarfull} width={50} height={50} alt={player.personaname} />}
+                    {player.avatarfull && <Image src={player.avatarfull} width={50} height={50} alt={player.personaname} loading="lazy" />}
                 </>
             ))}
         </section>
