@@ -38,22 +38,22 @@ export interface IHeroes {
     pro_ban: number;
     pro_win: number;
     pro_pick: number;
-    f_pick: number;
-    f_win: number;
-    s_pick: number;
-    s_win: number;
-    t_pick: number;
-    t_win: number;
-    fo_pick: number;
-    fo_win: number;
-    fi_pick: number;
-    fi_win: number;
-    six_pick: number;
-    six_win: number;
-    sev_pick: number;
-    sev_win: number;
-    ei_pick: number;
-    ei_win: number;
+    "1_pick": number,
+    "1_win": number,
+    "2_pick": number,
+    "2_win": number,
+    "3_pick": number,
+    "3_win": number,
+    "4_pick": number,
+    "4_win": number,
+    "5_pick": number,
+    "5_win": number,
+    "6_pick": number,
+    "6_win": number,
+    "7_pick": number,
+    "7_win": number,
+    "8_pick": number,
+    "8_win": number,
     null_pick: number;
     null_win: number;
 }
