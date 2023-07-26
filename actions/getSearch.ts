@@ -4,8 +4,8 @@ import {IPlayerSearch} from "@/types/search";
 import {IProPlayer} from "@/types/pro-players";
 import getProPlayers from "@/actions/getProPlayers";
 
-const getPlayerByName = async (q: string): Promise<IPlayerSearch[] | IProPlayer[] | undefined> => {
-    if (q.trim().length === 0) {
+const getSearch = async (q: string): Promise<IPlayerSearch[] | IProPlayer[] | undefined> => {
+    if (q === "") {
         return await getProPlayers();
     }
 
@@ -17,4 +17,4 @@ const getPlayerByName = async (q: string): Promise<IPlayerSearch[] | IProPlayer[
     }
 };
 
-export default getPlayerByName;
+export default getSearch;

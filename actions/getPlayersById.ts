@@ -2,7 +2,7 @@ import axios, {AxiosResponse} from "axios";
 import {baseURL} from "@/const/axios";
 import {IFindPlayer} from "@/types/find-player";
 
-const getPlayerByName = async (id: string): Promise<IFindPlayer | undefined> => {
+const getPlayerById = async (id: string): Promise<IFindPlayer | undefined> => {
     try {
         const response: AxiosResponse<IFindPlayer> = await axios.get(`${baseURL}players/${id}`);
         return response.data;
@@ -11,4 +11,4 @@ const getPlayerByName = async (id: string): Promise<IFindPlayer | undefined> => 
     }
 };
 
-export default getPlayerByName;
+export default getPlayerById;
