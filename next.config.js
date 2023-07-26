@@ -3,6 +3,8 @@ const nextConfig = {
     images: {
         domains: [
             "api.opendota.com",
+            "avatars.steamstatic.com",
+            "steamcdn-a.akamaihd.net",
         ],
     },
 }
