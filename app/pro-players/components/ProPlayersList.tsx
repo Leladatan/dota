@@ -1,5 +1,6 @@
 import {type FC} from 'react';
 import {IProPlayer} from "@/types/pro-players";
+import Image from "next/image";
 
 interface ProPlayersListProps {
     players: IProPlayer[] | undefined;
@@ -8,7 +9,12 @@ interface ProPlayersListProps {
 const ProPlayersList: FC<ProPlayersListProps> = ({players}) => {
     return (
         <section className="grid 2xl:grid-cols-7 xl:grid-cols-6 lg:grid-cols-5 md:grid-cols-3 grid-cols-4 gap-5 px-6">
-            {players?.map(player => (<p key={player.account_id}>{player.name}</p>))}
+            {players?.map(player => (
+                <>
+                    <p key={player.account_id}>{player.name}</p>
+                    {player.avatarfull && <Image src={player.avatarfull} alt={player.personaname} />}
+                </>
+            ))}
         </section>
     );
 };
