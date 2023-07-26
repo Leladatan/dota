@@ -11,12 +11,12 @@ const SearchInput: FC = () => {
     const debouncedValue = useDebounce<string>(value, 500);
 
     useEffect((): void => {
-        const query: {q: string} = {
-            q: debouncedValue,
+        const query: {id: string} = {
+            id: debouncedValue,
         };
 
         const url: string = qs.stringifyUrl({
-            url: '/search',
+            url: '/find-player',
             query: query,
         });
 

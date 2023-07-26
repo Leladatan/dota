@@ -1,33 +1,46 @@
 import {type FC} from 'react';
-import {IPlayerSearch} from "@/types/search";
 import SearchInput from "./SearchInput";
-import {IProPlayer} from "@/types/pro-players";
 import Image from "next/image";
+import {IFindPlayer} from "@/types/find-player";
+import {IWL} from "@/types/WL";
+import rank from "@/functions/rank";
+import Link from "next/link";
+import {IPlayerHeroes} from "@/types/PlayerHeroes";
 
 interface SearchContentProps {
-    players: IPlayerSearch[] | IProPlayer[] | undefined;
+    player: IFindPlayer | undefined;
     searchParams: {
-        q: string;
-    }
+        id: string;
+    };
+    wl: IWL | undefined;
+    heroesGames: IPlayerHeroes[] | undefined;
 }
 
-const SearchContent: FC<SearchContentProps> = ({players, searchParams}) => {
+const SearchContent: FC<SearchContentProps> = async ({player, searchParams, wl, heroesGames}) => {
     return (
         <>
             <section className="flex flex-col gap-y-2 px-6">
                 <SearchInput />
-                <div className={players?.length === 0 ? "flex items-center justify-center" :
-                    "grid 2xl:grid-cols-7 xl:grid-cols-6 lg:grid-cols-5 md:grid-cols-3 grid-cols-4 gap-5"}
-                >
-                    {players?.length === 0 ?
+                <div>
+                    {!player ?
                         <h2>Not players found</h2>
                         :
-                        players?.map(player => (
-                            <div key={player.account_id} className="flex flex-col items-center justify-center gap-y-2 overflow-hidden p-2">
-                                {player.avatarfull && <Image src={player.avatarfull} width={50} height={50} alt={player.personaname} loading="lazy" />}
-                                <h3 className="text-center truncate">{player.personaname}</h3>
+                        <div className="flex gap-x-4 overflow-hidden p-2 w-full">
+                            <div>
+                                {player.profile.avatarfull && <Image src={player.profile.avatarfull}
+                                                                     width={50} height={50}
+                                                                     alt={player.profile.personaname} loading="lazy"
+                                />}
+                                <h3 className="text-center truncate">{player.profile.personaname}</h3>
+                                <p>{wl && ((wl.win / (wl.win + wl.lose)) * 100).toFixed(2)}%</p>
                             </div>
-                        ))
+                            <div>
+                                <span>{rank(player.mmr_estimate.estimate)}</span>
+                                {player.profile.plus && <Image src="/Dota_Plus_icon.png" width={25} height={25} alt="Dota Plus" />}
+                                {player.profile.steamid && <Link href={player.profile.steamid}><Image src="/steam.png" width={25} height={25} alt="Steam" /></Link>}
+                                <p>{player.profile.loccountrycode}</p>
+                            </div>
+                        </div>
                     }
                 </div>
             </section>

@@ -1,7 +1,7 @@
 import {IPlayerSearch} from "@/types/search";
-import getPlayersByName from "@/actions/getPlayersByName";
 import SearchContent from "@/app/search/components/SearchContent";
 import {IProPlayer} from "@/types/pro-players";
+import getSearch from "@/actions/getSearch";
 
 interface SearchPage {
     searchParams: {
@@ -9,8 +9,8 @@ interface SearchPage {
     }
 }
 
-const SearchPlayersPage = async ({searchParams}: SearchPage) => {
-    const players: IPlayerSearch[] | IProPlayer[] | undefined = await getPlayersByName(searchParams.q);
+const SearchPage = async ({searchParams}: SearchPage) => {
+    const players: IPlayerSearch[] | IProPlayer[] | undefined = await getSearch(searchParams.q);
 
     return (
         <>
@@ -19,4 +19,4 @@ const SearchPlayersPage = async ({searchParams}: SearchPage) => {
     );
 };
 
-export default SearchPlayersPage;
+export default SearchPage;

@@ -16,7 +16,7 @@ const SearchInput: FC = () => {
         };
 
         const url: string = qs.stringifyUrl({
-            url: '/find-players',
+            url: '/search',
             query: query,
         });
 
