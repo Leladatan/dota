@@ -1,5 +1,3 @@
-"use client"
-
 import {type FC, useEffect} from 'react';
 import {IHeroes} from "@/types/heroes";
 import Image from "next/image";
@@ -10,10 +8,6 @@ interface HeroContentProps {
 }
 
 const HeroContent: FC<HeroContentProps> = ({hero}) => {
-    useEffect(() => {
-        console.log(hero)
-    }, [])
-
     if (!hero) return <div>Not found</div>
 
     return (

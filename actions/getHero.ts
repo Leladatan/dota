@@ -5,7 +5,7 @@ import {IHeroes} from "@/types/heroes";
 const getHero = async (slug: string): Promise<IHeroes | undefined> => {
     try {
         const response: AxiosResponse<IHeroes[]> = await axios.get(`${baseURL}/heroStats`);
-        return response.data.filter(hero => slug === hero.localized_name)[0];
+        return response.data.filter(hero => slug === hero.name)[0];
     } catch (e) {
         console.error(e);
     }
