@@ -5,12 +5,18 @@ import {IWL} from "@/types/WL";
 import {IFindPlayer} from "@/types/find-player";
 import {IPlayerHeroes} from "@/types/PlayerHeroes";
 import getPlayerHeroes from "@/actions/getPlayerHeroes";
+import {Metadata} from "next";
 
 interface FindPlayerPage {
     searchParams: {
         id: string;
     }
 }
+
+export const metadata: Metadata = {
+    title: 'Dota Info Find Player',
+    description: 'Dota Info',
+};
 
 const FindPlayerPage = async ({searchParams}: FindPlayerPage) => {
     const player: IFindPlayer | undefined = await getPlayerById(searchParams.id);
